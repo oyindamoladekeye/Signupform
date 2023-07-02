@@ -1,0 +1,127 @@
+.main{
+  max-width: 100vw;
+  width:100%;
+  color: white;
+  padding-inline: 7rem;
+  margin-block: 6rem;
+  display: flex;
+  align-items: center;
+}
+.content{
+  width: 55%;
+  display: flex;
+  gap:30px;
+  flex-direction: column;
+}
+h1{
+  font-size: 3.2rem;
+}
+.experience{
+  font-size: 19px;
+}
+.form-group{
+  max-width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap:30px
+}
+a{
+  text-decoration: none;
+}
+.trial{
+  color: hsl(246, 25%, 77%);
+  gap:5px;
+  background-color: hsl(248, 32%, 49%);
+}
+.trial , .submit{
+  display: flex;
+  padding-inline: 100px;
+  padding-block: 20px;
+  white-space: nowrap;
+  border-radius: 10px;
+  font-weight: 600;
+  justify-content: center;
+}
+.try{
+  color: white;
+}
+.try:hover{
+  text-decoration: underline;
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 40px 30px 50px;
+  border-radius: 10px;
+  gap:20px;
+  justify-content: space-between;
+}
+.form input{
+  width:100%;
+  border: 1px solid rgba(0,0, 0, 0.2);
+  padding: 20px 30px;
+  outline:none;
+  border-radius: 10px;
+}
+.form input::placeholder{
+  font-weight: 600;
+  color:rgba(0,0, 0, 0.6)
+}
+.form input:active{
+  border-color:hsl(249, 10%, 26%)
+}
+.submit{
+  background-color:  hsl(154, 59%, 51%);
+  color: white;
+  text-align: center;
+}
+.terms{
+  color: rgba(0,0, 0, 0.3);
+  font-size: 0.8rem;
+}
+.terms-link{
+  color:hsl(0, 100%, 74%) 
+}
+
+@media screen and (max-width:1140px) {
+  .form-group{
+    max-width: 50%;
+  }
+  h1{
+    font-size: 2.4rem;
+  }
+  .experience{
+    font-size: 1rem;
+  }
+  .main{
+    padding-inline: 3.5rem;
+  }
+}
+@media screen and (max-width:768px) {
+  .main{
+    flex-direction: column;
+    padding-inline:2rem ;
+  }
+  .form-group{
+    max-width: 100%;
+  }
+  h1{
+    font-size: 2rem;
+  }
+  .content{
+    gap: 10px;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+}
+@media screen and (max-width:375px) {
+  .trial{
+    white-space: unset;
+    padding-inline: 30px;
+    padding-block: 20px;
+    text-align: center;
+    flex-direction: column;
+  }
+}
