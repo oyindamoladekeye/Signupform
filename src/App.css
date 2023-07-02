@@ -68,9 +68,20 @@ a{
   font-weight: 600;
   color:rgba(0,0, 0, 0.6)
 }
-.form input:active{
-  border-color:hsl(249, 10%, 26%)
+
+input.error{
+  border-color: hsl(0, 100%, 74%) ;
 }
+.input-error{
+  color:hsl(0, 100%, 74%);
+  padding-top: 10px;
+  text-align: right;
+  font-size: 12px;
+  font-style: italic;
+}
+/* .form input.touched{
+  border-color:hsl(249, 10%, 26%)
+} */
 .submit{
   background-color:  hsl(154, 59%, 51%);
   color: white;

@@ -1,8 +1,42 @@
-import { useState } from 'react'
 import './App.css'
-
+import { useFormik } from 'formik';
+import { IconError } from './IconError';
 function App() {
 
+  const validate = values=>{
+    const errors = {};
+
+    if (!values.firstName){
+      errors.firstName = "First Name cannot be empty";
+    }
+    if(!values.lastName){
+      errors.lastName = "Last Name cannot be empty";
+    }
+    if(!values.password){
+      errors.password = "Password cannot be empty";
+    }
+    else if(values.password.length < 8){
+      errors.password ="Password must be 8 characters or more"
+    }
+    if(!values.email){
+      errors.email = "Email Address cannot be empty";
+    }
+    else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)){
+      errors.email = "Looks like this is not an email";
+    }
+
+    return errors;
+  };
+
+  const formik= useFormik({
+    initialValues:{
+      firstName:"",
+      lastName:"",
+      email:"",
+      password:"",
+    },
+    validate,
+  });
   return (
     <div className='main'>
       <div className='content'>
@@ -15,26 +49,63 @@ function App() {
       </div>
       <div className='form-group'>
         <a href='./' className='trial'><a  href="./" className='try'>Try it free 7 days</a>then $20/mo.thereafter</a>
-        <form action="" className='form'>
+      <form onSubmit={formik.handleSubmit} className='form'>
         <div className='firstname'>
-          <input type="text"
-          placeholder="First Name"
+          {/* <IconError /> */}
+          <input
+          id="firstName"
+          type="text"
+          placeholder={!formik.errors.password && "First Name"}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.firstName}
+          className={formik.errors.firstName && formik.touched.firstName && "error"}
            />
+           {formik.touched.firstName && formik.errors.firstName ? (
+         <div className='input-error'>{formik.errors.firstName}</div>
+       ) : null}
         </div>
         <div>
-          <input type="text"
-          placeholder="Last Name"
+          <input
+          id="lastName"
+          type="text"
+          placeholder={!formik.errors.password && "Last Name"}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.lastName}
+          className={formik.errors.lastName && formik.touched.lastName && "error"}
            />
+          {formik.touched.lastName && formik.errors.lastName ? (
+         <div className="input-error">{formik.errors.lastName}</div>
+       ) : null}
         </div>
         <div>
-          <input type="text"
-          placeholder="Email Address"
+          <input
+          id="email" 
+          type="text"
+          placeholder={!formik.errors.password && "Email Address"}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.email}
+          className={formik.errors.email && formik.touched.email && "error"}
            />
+          {formik.touched.email && formik.errors.email ? (
+         <div className='input-error'>{formik.errors.email}</div>
+       ) : null}
         </div>
         <div>
-          <input type="text"
-          placeholder="Password"
+          <input
+          id="password" 
+          type="text"
+          placeholder={!formik.errors.password && "Password"}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.password}
+          className={formik.errors.password && formik.touched.password && "error"}
            />
+           {formik.touched.password && formik.errors.password ? (
+         <div className='input-error'>{formik.errors.password}</div>
+       ) : null}
         </div>
         <button type='submit' className='submit'>CLAIM YOUR FREE TRIAL</button>
         <p className='terms'>By clicking the button, you are agreeing to our <a href="./" className='terms-link'>Terms and Services</a></p>
@@ -45,31 +116,4 @@ function App() {
 }
 
 export default App
-{/* <div class="w-full max-w-xs">
-  <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-    <div class="mb-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-        Username
-      </label>
-      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username">
-    </div>
-    <div class="mb-6">
-      <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
-        Password
-      </label>
-      <input class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************">
-      <p class="text-red-500 text-xs italic">Please choose a password.</p>
-    </div>2
-    <div class="flex items-center justify-between">
-      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-        Sign In
-      </button>
-      <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
-        Forgot Password?
-      </a>
-    </div>
-  </form>
-  <p class="text-center text-gray-500 text-xs">
-    &copy;2020 Acme Corp. All rights reserved.
-  </p>
-</div> */}
+
