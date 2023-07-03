@@ -27,7 +27,9 @@ function App() {
 
     return errors;
   };
-
+  const onSubmit = ({ resetForm }) => {
+    resetForm();
+  };
   const formik= useFormik({
     initialValues:{
       firstName:"",
@@ -35,6 +37,7 @@ function App() {
       email:"",
       password:"",
     },
+    onSubmit,
     validate,
   });
   return (
@@ -55,59 +58,91 @@ function App() {
           <input
           id="firstName"
           type="text"
-          placeholder={!formik.errors.password && "First Name"}
+          aria-label="First Name"
+          placeholder={!formik.touched.firstName ? "First Name" : null}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.firstName}
           className={formik.errors.firstName && formik.touched.firstName && "error"}
            />
            {formik.touched.firstName && formik.errors.firstName ? (
-         <div className='input-error'>{formik.errors.firstName}</div>
+           <div className="input">
+             <div className='input-error'>{formik.errors.firstName}
+             </div>
+             <div className="icon-error">
+             <IconError />
+             </div>
+           </div>
        ) : null}
         </div>
         <div>
           <input
           id="lastName"
           type="text"
-          placeholder={!formik.errors.password && "Last Name"}
+          aria-label="Last Name"
+          placeholder={!formik.touched.lastName ? "Last Name" : null}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.lastName}
           className={formik.errors.lastName && formik.touched.lastName && "error"}
            />
           {formik.touched.lastName && formik.errors.lastName ? (
-         <div className="input-error">{formik.errors.lastName}</div>
-       ) : null}
+           <div className="input">
+             <div className='input-error'>{formik.errors.lastName}
+             </div>
+             <div className="icon-error">
+             <IconError />
+             </div>
+           </div>
+           ) : null}
         </div>
         <div>
           <input
           id="email" 
-          type="text"
-          placeholder={!formik.errors.password && "Email Address"}
+          type="email"
+          aria-label="Email Address"
+          placeholder={!formik.touched.email ? "Email Address" : null}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
           className={formik.errors.email && formik.touched.email && "error"}
            />
           {formik.touched.email && formik.errors.email ? (
-         <div className='input-error'>{formik.errors.email}</div>
+            <div className="input">
+             <div className='input-error'>{formik.errors.email}
+             </div>
+             <div className="icon-error">
+             <IconError />
+             </div>
+           </div>
        ) : null}
         </div>
         <div>
           <input
           id="password" 
-          type="text"
-          placeholder={!formik.errors.password && "Password"}
+          type="password"
+          aria-label="Password"
+          placeholder={!formik.touched.password ? "Password" : null}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password}
           className={formik.errors.password && formik.touched.password && "error"}
            />
            {formik.touched.password && formik.errors.password ? (
-         <div className='input-error'>{formik.errors.password}</div>
+            <div className="input">
+              <div className='input-error'>{formik.errors.password}
+              </div>
+              <div className="icon-error">
+                <IconError />
+              </div>
+            </div>
        ) : null}
         </div>
-        <button type='submit' className='submit'>CLAIM YOUR FREE TRIAL</button>
+        <button type='submit'
+        disabled={!formik.isValid} 
+        className = {formik.isValid ? "submit" : "disabled"}>
+          CLAIM YOUR FREE TRIAL
+        </button>
         <p className='terms'>By clicking the button, you are agreeing to our <a href="./" className='terms-link'>Terms and Services</a></p>
       </form>
       </div>
