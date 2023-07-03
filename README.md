@@ -48,6 +48,6 @@ Formik helps with form validation and errors, making it easier for me to operate
 
 ## Author
 
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/oyindamoladekeye)
-- Twitter - [@ypemisere16](https://www.twitter.com/pemisere16)
+- Frontend Mentor - [@oyindamoladekeye](https://www.frontendmentor.io/profile/oyindamoladekeye)
+- Twitter - [@pemisere16](https://www.twitter.com/pemisere16)
 
