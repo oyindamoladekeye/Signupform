@@ -27,7 +27,7 @@ function App() {
 
     return errors;
   };
-  const onSubmit = ({ resetForm }) => {
+  const onSubmit = (values,{ resetForm }) => {
     resetForm();
   };
   const formik= useFormik({
