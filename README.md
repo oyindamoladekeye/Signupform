@@ -23,7 +23,7 @@ Users should be able to:
 ### Links
 
 - Solution URL:(https://github.com/oyindamoladekeye/Signupform)
-- Live Site URL: [Add live site URL here](https://signupform-fem.netlify.app)
+- Live Site URL:(https://signupform-fem.netlify.app)
 
 ### Built with
 
